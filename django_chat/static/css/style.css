@@ -1,0 +1,97 @@
+/* FILEPATH: /media/git-leo-here/727A9DBB7A9D7C93/Content/COMPUTER SCIENCE/My python projects/Django-Chat/style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+
+/* Reset default styles */
+body, h1, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set background color and font styles */
+body {
+  background-color: #f2f2f2;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Center the content */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background:linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);;
+}
+
+/* WELCOME PAGE */
+
+/* Style the chat container */
+.chat-container {
+  background-color: #fff;
+  width: 70%;
+  height: 80%;
+  border-radius: 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Style the chat header */
+.chat-header {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-header h1{
+    margin: 0;
+    font-size: 32px;
+    color: rgb(0, 149, 255);
+    font-weight: 700;
+}
+
+.btn {
+  background-color: #4c65af;
+  border: none;
+  border-radius: 24px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #324273;
+}
+
+.chat-messages{
+  padding: 20px;
+  height: 70%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly ;
+}
+
+.chat-messages .message {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 10px;
+	border-radius: 25px;
+	background-color: #306a77;
+    color:white;
+	padding: 10px;
+	position: relative;
+}
+
+/* WELCOME PAGE END */
+
+/* LOGIN FORM */

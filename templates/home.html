@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="chat-container">
+    <header class="chat-header">
+      <h1>Hello , {{request.user}} !</h1>
+
+      <div
+  class="chat__item__container"
+  id="id_chat_item_container"
+  style="font-size: 20px"
+>
+  <br />
+  <input type="text" id="id_message_send_input" placeholder="Type your message here" />
+  <button type="submit" id="id_message_send_button" class="btn" >Send Message</button>
+  <br />
+  <br />
+</div>
+
+      {% if request.user.is_authenticated  %}
+      <center>
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn">Log Out</button>
+      </form>
+      </center>
+    
+{% endif %}
+  </header>
+  <div class="chat-messages">
+  </div>
+<br>
+
+
+<script>
+  const chatSocket = new WebSocket("ws://" + window.location.host + "/");
+  chatSocket.onopen = function (e) {
+    console.log("The connection was setup successfully !");
+  };
+  chatSocket.onclose = function (e) {
+    console.log("Something unexpected happened !");
+  };
+  document.querySelector("#id_message_send_input").focus();
+  document.querySelector("#id_message_send_input").onkeyup = function (e) {
+    if (e.keyCode == 13) {
+      document.querySelector("#id_message_send_button").click();
+    }
+  };
+  document.querySelector("#id_message_send_button").onclick = function (e) {
+    var messageInput = document.querySelector(
+      "#id_message_send_input"
+    ).value;
+    chatSocket.send(JSON.stringify({ message: messageInput, username : "{{request.user.username}}"}));
+  };
+  chatSocket.onmessage = function (e) {
+    const data = JSON.parse(e.data);
+    var div = document.createElement("div");
+    div.innerHTML = data.username + " : " + data.message;
+    div.className = "message";
+    document.querySelector("#id_message_send_input").value = "";
+    document.querySelector(".chat-messages").appendChild(div);
+  };
+</script>
+{% else %}
+
+<div class="chat-container">
+  <header class="chat-header">
+    <h1> Django Chat </h1>
+    <a href="{% url 'login' %}" class="btn">Start Chatting</a>
+  </header>
+    <div class="chat-messages">
+        <div class="message">
+            Uses Django Channels for real-time chat
+        </div>
+        <div class="message">
+            Instantly connect with other users in the group chat
+        </div>
+
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

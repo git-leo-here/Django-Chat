@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Django Chat App{% endblock %}</title>
+  <style>
+    /* FILEPATH: /media/git-leo-here/727A9DBB7A9D7C93/Content/COMPUTER SCIENCE/My python projects/Django-Chat/style.css */
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+    
+    
+    /* Reset default styles */
+    body, h1, p {
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Set background color and font styles */
+    body {
+      background-color: #f2f2f2;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    /* Center the content */
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background:linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);;
+    }
+    
+    /* WELCOME PAGE */
+    
+    
+    .chat-container {
+      background-color: #fff;
+      width: 80%;
+      height: 90%;
+      border-radius: 32px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    }
+    
+    
+    .chat-header {
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;
+        border-top-left-radius: 32px;
+        border-top-right-radius: 32px;
+        display: flex;
+        justify-content: space-between;
+        height:5rem;
+    }
+    
+    .chat-header h1{
+        margin: 0;
+        font-size: 32px;
+        color: rgb(0, 149, 255);
+        font-weight: 700;
+    }
+    
+    .btn {
+      background-color: #4c65af;
+      border: none;
+      border-radius: 24px;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #324273;
+    }
+    
+    .chat-messages{
+      padding: 20px;
+      height: 70%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly ;
+    }
+    
+    .chat-messages .message {
+      width: auto;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      margin-left: 10px;
+      border-radius: 25px;
+      background-color: #306a77;
+      color:white;
+      padding: 10px;
+      position: relative;
+    }
+    
+    /* WELCOME PAGE END */
+    
+    /* LOGIN FORM */
+    .form-heading {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login-form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 24px;
+    }
+
+    .signup-btn {
+      color: #4c65af;
+      border: none;
+      border-radius: 24px;
+      text-decoration: underline;
+      padding: 15px 32px;
+      text-align: center;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    /* LOGIN FORM END */
+
+    /* SIGNUP FORM */
+
+    .signup-form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+    }
+
+    .form-heading {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .helptext{
+      display:none;
+    }
+
+    .signup-form input {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 24px;
+    }
+
+    /* SIGNUP FORM END */
+
+    /* CHAT PAGE */
+
+    #id_message_send_input{
+      border-radius: 24px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    #id_message_send_button{
+      background-color: #4c65af;
+      border: none;
+      border-radius: 24px;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+    
+    }
+  </style>
+</head>
+
+<body>
+  <main class="content">
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+
+</html>
