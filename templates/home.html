@@ -32,6 +32,11 @@
 {% endif %}
   </header>
   <div class="chat-messages">
+    {% for message in initial_messages %}
+        <div class="message">
+            {{ message.username }} : {{ message.message }}
+        </div>
+    {% endfor %}
   </div>
 <br>
 
@@ -58,12 +63,17 @@
   };
   chatSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
-    var div = document.createElement("div");
-    div.innerHTML = data.username + " : " + data.message;
-    div.className = "message";
+    console.log(data);
+    var chatMessagesDiv = document.querySelector(".chat-messages");
+    chatMessagesDiv.innerHTML = '';  // Clear the chat messages div
+    data.forEach(function(message) {
+        var div = document.createElement("div");
+        div.innerHTML = message.username + " : " + message.message;
+        div.className = "message";
+        chatMessagesDiv.appendChild(div);
+    });
     document.querySelector("#id_message_send_input").value = "";
-    document.querySelector(".chat-messages").appendChild(div);
-  };
+};
 </script>
 {% else %}
 
@@ -78,6 +88,12 @@
         </div>
         <div class="message">
             Instantly connect with other users in the group chat
+        </div>
+        <div class="message">
+            No need to refresh the page to see new messages
+        </div>
+        <div class="message">
+            Just login and start chatting
         </div>
 
     </div>
