@@ -64,15 +64,21 @@
   chatSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     console.log(data);
-    var chatMessagesDiv = document.querySelector(".chat-messages");
-    chatMessagesDiv.innerHTML = '';  // Clear the chat messages div
+    {% comment %} var chatMessagesDiv = document.querySelector(".chat-messages");
+    // chatMessagesDiv.innerHTML = '';  // Clear the chat messages div
     data.forEach(function(message) {
         var div = document.createElement("div");
         div.innerHTML = message.username + " : " + message.message;
         div.className = "message";
         chatMessagesDiv.appendChild(div);
     });
+    document.querySelector("#id_message_send_input").value = ""; {% endcomment %}
+
+    var div = document.createElement("div");
+    div.innerHTML = data.username + " : " + data.message;
+    div.className = "message";
     document.querySelector("#id_message_send_input").value = "";
+    document.querySelector(".chat-messages").appendChild(div);
 };
 </script>
 {% else %}
